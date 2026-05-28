@@ -47,16 +47,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Redirect authenticated users away from landing page to their main dashboard page
-  if (pathname === '/') {
-    if (session) {
-      if (session.role === 'admin') {
-        return NextResponse.redirect(new URL('/admin/dashboard', request.url));
-      } else {
-        return NextResponse.redirect(new URL('/user/dashboard', request.url));
-      }
-    }
-  }
+
 
   return NextResponse.next();
 }
